@@ -9,14 +9,17 @@
         android:roundIcon="@mipmap/icon1"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".translate1"></activity>
-        <activity android:name=".MI" />
-        <activity android:name=".Cva" />
+        <activity android:name=".MI"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Cva"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".translate"
             android:label="@string/title_activity_translate"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Cva">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bbb"
+        android:layout_marginLeft="-80dp"
+        android:layout_marginRight="-80dp"
+        android:layout_marginBottom="-15dp"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <Spinner
         android:id="@+id/spinnerCVA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/custom_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.873"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -19,14 +32,17 @@
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="250dp"
+        android:layout_width="260dp"
         android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:onClick="clickButton"
-        android:text="Please smile "
+        android:text="@string/Please_smile"
+        android:textStyle="bold"
+        android:background="@drawable/custom_button"
+        android:textColor="#FF0000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -36,13 +52,16 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="250dp"
+        android:layout_width="260dp"
         android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:onClick="clickButton"
-        android:text="Please raise your hands forward and squeeze"
+        android:text="@string/Please_raise_your_hands_forward_and_squeeze"
+        android:textStyle="bold"
+        android:background="@drawable/custom_button"
+        android:textColor="#FF0000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -52,29 +71,37 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="250dp"
+        android:layout_width="260dp"
         android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:onClick="clickButton"
-        android:text="Count to 10"
+        android:text="@string/Count_to_10"
+        android:textStyle="bold"
+        android:background="@drawable/custom_button"
+        android:textColor="#FF0000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintVertical_bias="0.042"/>
+
+
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="250dp"
+        android:layout_width="260dp"
         android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:onClick="clickButton"
-        android:text="Dose the patient speak properly"
+        android:text="@string/Does_the_patient_speak_properly"
+        android:textStyle="bold"
+        android:background="@drawable/custom_button"
+        android:textColor="#FF0000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
@@ -95,4 +122,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CVAButton" />
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+
+</RelativeLayout>

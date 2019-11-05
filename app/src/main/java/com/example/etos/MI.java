@@ -33,12 +33,12 @@ public class MI extends AppCompatActivity implements AdapterView.OnItemSelectedL
             @Override
             public void onClick(View v) {
                 switch(getSpinnerText()){
-                    case "English":
+                    case "אנגלית":
 
                         break;
-                    case "Russian":
+                    case "רוסית":
                         break;
-                    case "Amharic":
+                    case "אמהרית":
                         break;
                 }
                 mp.start();
@@ -64,8 +64,8 @@ public class MI extends AppCompatActivity implements AdapterView.OnItemSelectedL
 
         spinner = findViewById(R.id.spinnerIM);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.languages, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                R.array.languages, R.layout.spinner_layout);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_layout);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 

@@ -1,5 +1,8 @@
 package com.example.etos;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,18 +10,24 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
 
 public class Cva extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     Spinner spinner;
-
     Button button1;
     Button button2;
     Button button3;
     Button button4;
+    Dialog epicDialog;
+    Button returnBtn;
+    TextView title, textMass;
+    ImageView closeB;
+    int [] arrSpinner ={R.string.eng, R.string.rus, R.string.amh};
 
 
     public void clickButton(final View view)
@@ -37,19 +46,21 @@ public class Cva extends AppCompatActivity implements AdapterView.OnItemSelected
 
 
         button1.setOnClickListener(new View.OnClickListener() {
-            public String getSpinnerText(){
+            private String getSpinnerText(){
+
                 return spinner.getSelectedItem().toString();
             }
+
             @Override
             public void onClick(View v) {
                 switch(getSpinnerText()){
-                    case "English":
+                    case "אנגלית":
                         mpEnglish3.start();
                         break;
-                    case "Russian":
+                    case "רוסית":
                         mpRussian1.start();
                         break;
-                    case "Amharic":
+                    case "אמהרית":
                         mpAmharic3.start();
                         break;
                 }
@@ -57,19 +68,19 @@ public class Cva extends AppCompatActivity implements AdapterView.OnItemSelected
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
-            public String getSpinnerText(){
+            private String getSpinnerText(){
                 return spinner.getSelectedItem().toString();
             }
             @Override
             public void onClick(View v) {
                 switch(getSpinnerText()){
-                    case "English":
+                    case "אנגלית":
                         mpEnglish2.start();
                         break;
-                    case "Russian":
+                    case "רוסית":
                         mpRussian2.start();
                         break;
-                    case "Amharic":
+                    case "אמהרית":
 
                         break;
                 }
@@ -78,20 +89,60 @@ public class Cva extends AppCompatActivity implements AdapterView.OnItemSelected
         });
 
         button3.setOnClickListener(new View.OnClickListener() {
-            public String getSpinnerText(){
+            private String getSpinnerText(){
                 return spinner.getSelectedItem().toString();
             }
+
+            private void showDialog(int lan){
+                epicDialog.setContentView(R.layout.alert_counting10);
+                closeB = epicDialog.findViewById(R.id.closePopup);
+                returnBtn = epicDialog.findViewById(R.id.btnReturn);
+                title = epicDialog.findViewById(R.id.titleTv);
+                textMass = epicDialog.findViewById(R.id.textTv);
+
+                switch (lan){
+                    case 1:
+                        textMass.setText("1. One\n2. Two\n3. Three\n4. Four\n5. Five\n6. Six\n7. Seven\n8. Eight\n9. Nine\n10. Ten");
+                        break;
+                    case 2:
+                        textMass.setText("1. Odin\n2. Dva\n3. Tri\n4. Chetyre\n5. Pyat\n6. Shest\n7. Syem\n8. Vosem\n9. Devyat\n10. Desyat");
+                        break;
+                    case 3:
+                        textMass.setText("1. Anidi\n2. Huleti\n3. Sositi \n4. Arati\n5. Amisiti\n6. Sidisiti \n7. Sebati\n8. Siminiti\n9. Zetenyi\n10. Asiri");
+                    break;
+                }
+
+                returnBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        epicDialog.dismiss();
+                    }
+                });
+
+                closeB.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        epicDialog.dismiss();
+                    }
+                });
+                epicDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                epicDialog.show();
+            }
+
             @Override
             public void onClick(View v) {
                 switch(getSpinnerText()){
-                    case "English":
+                    case "אנגלית":
                         mpEnglish1.start();
+                        showDialog(1);
                         break;
-                    case "Russian":
+                    case "רוסית":
                         mpRussian3.start();
+                        showDialog(2);
                         break;
-                    case "Amharic":
+                    case "אמהרית":
                         mpAmharic1.start();
+                        showDialog(3);
                         break;
                 }
 
@@ -99,19 +150,19 @@ public class Cva extends AppCompatActivity implements AdapterView.OnItemSelected
         });
 
         button4.setOnClickListener(new View.OnClickListener() {
-            public String getSpinnerText(){
+            private String getSpinnerText(){
                 return spinner.getSelectedItem().toString();
             }
             @Override
             public void onClick(View v) {
                 switch(getSpinnerText()){
-                    case "English":
+                    case "אנגלית":
                         mpEnglish4.start();
                         break;
-                    case "Russian":
+                    case "רוסית":
                         mpRussian4.start();
                         break;
-                    case "Amharic":
+                    case "אמהרית":
                         break;
                 }
 
@@ -129,12 +180,17 @@ public class Cva extends AppCompatActivity implements AdapterView.OnItemSelected
         button3 = findViewById(R.id.button3);
         button4 = findViewById(R.id.button4);
 
+        epicDialog = new Dialog(this);
+
+
+
         spinner = findViewById(R.id.spinnerCVA);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.languages, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                R.array.languages, R.layout.spinner_layout);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_layout);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+
 
     }
 
